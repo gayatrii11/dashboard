@@ -1,0 +1,17 @@
+{% extends "layouts/dashboard.layout.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block content %}
+    <div id="chart" class="chart" name="chart"></div>
+{% endblock %}
+
+{% block js %}
+
+const makeChart= ()=>{
+  var graphs = {{graphJSON | safe}};
+  Plotly.newPlot('chart',graphs,{});
+}
+ 
+window.onload= ()=> makeChart()
+{% endblock %}

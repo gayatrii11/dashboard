@@ -29,3 +29,7 @@ def dashboard():
     fig = px.bar(df, x='Fruit', y='Amount', color='City', barmode='group')   
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template("dashboard.html", graphJSON= graphJSON )
+
+@app.route("/dashboard/js-chart")
+def jschart():
+  return render_template("js-chart.html")

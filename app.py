@@ -42,11 +42,24 @@ def dashboard():
 
     return render_template("dashboard.html", **locals())
 
+
+
+@app.route("/dashboard/enterprise-level-risk")
+def page_2():
+  path= request.path
+  
+  q1_strategic_risk= 20
+  q1_operational_risk= 40
+
+  q2_strategic_risk= 70
+  q2_operational_risk= 30
+
+  q3_strategic_risk= 50
+  q3_operational_risk= 90
+
+  return render_template("enterprise-level-risk.html", **locals())
+
+
 @app.route("/dashboard/js-chart")
 def jschart():
   return render_template("js-chart.html")
-
-@app.route("/dashboard/page-2")
-def page_2():
-  path= request.path
-  return render_template("page-2.html", **locals())

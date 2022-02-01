@@ -1,0 +1,120 @@
+{% extends "layouts/dashboard.layout.html" %}
+
+{% block title %} Enterprise Level Risk {% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="">
+        <h4 class="text-center">Enterprise Level Risk Mitigation Quarterly Status</h4>
+    </div>
+    <div class="row mt-4 bg-light p-2 py-4">
+        <div class="col">
+            <h5 class="text-center">Overall Effectiveness Status</h5>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <div class="d-flex justify-content-center">
+                    <p class="bg-danger text-light p-2 rounded"><strong>Q1</strong></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex justify-content-center">
+                    <p class="bg-warning text-light p-2 rounded"><strong>Q2</strong></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex justify-content-center">
+                    <p class="bg-success text-light p-2 rounded"><strong>Q3</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row for Strategic Risk -->
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <p><strong>Strategic Risk</strong></p>
+            </div>
+            <div class="col-md-3">
+                <!-- Progressbar Start -->
+                <div class="progress" style="height: 20px">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{ q1_strategic_risk }}%; height: 20px" aria-valuenow="{{ q1_strategic_risk }}"
+                        aria-valuemin="0" aria-valuemax="100">
+                    <strong>{{ q1_strategic_risk }}%</strong>
+                    </div>
+                </div>
+                <!-- Progressbar End -->
+            </div>
+            <div class="col-md-3">
+                 <!-- Progressbar Start -->
+                 <div class="progress" style="height: 20px">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ q2_strategic_risk }}%; height: 20px" aria-valuenow="{{ q2_strategic_risk }}"
+                        aria-valuemin="0" aria-valuemax="100">
+                    <strong>{{ q2_strategic_risk }}%</strong>
+                    </div>
+                </div>
+                <!-- Progressbar End -->
+            </div>
+            <div class="col-md-3">
+                 <!-- Progressbar Start -->
+                 <div class="progress" style="height: 20px">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ q3_strategic_risk }}%; height: 20px" aria-valuenow="{{ q3_strategic_risk }}"
+                        aria-valuemin="0" aria-valuemax="100">
+                    <strong>{{ q3_strategic_risk }}%</strong>
+                    </div>
+                </div>
+                <!-- Progressbar End -->
+            </div>
+        </div>
+
+
+        <!-- Row for Operational Risk -->
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <p><strong>Operational Risk</strong></p>
+            </div>
+            <div class="col-md-3">
+                <!-- Progressbar Start -->
+                <div class="progress" style="height: 20px">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{ q1_operational_risk }}%; height: 20px" aria-valuenow="{{ q1_operational_risk }}"
+                        aria-valuemin="0" aria-valuemax="100">
+                    <strong>{{ q1_operational_risk }}%</strong>
+                    </div>
+                </div>
+                <!-- Progressbar End -->
+            </div>
+            <div class="col-md-3">
+                 <!-- Progressbar Start -->
+                 <div class="progress" style="height: 20px">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ q2_operational_risk }}%; height: 20px" aria-valuenow="{{ q2_operational_risk }}"
+                        aria-valuemin="0" aria-valuemax="100">
+                    <strong>{{ q2_operational_risk }}%</strong>
+                    </div>
+                </div>
+                <!-- Progressbar End -->
+            </div>
+            <div class="col-md-3">
+                 <!-- Progressbar Start -->
+                 <div class="progress" style="height: 20px">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ q3_operational_risk }}%; height: 20px" aria-valuenow="{{ q3_operational_risk }}"
+                        aria-valuemin="0" aria-valuemax="100">
+                    <strong>{{ q3_operational_risk }}%</strong>
+                    </div>
+                </div>
+                <!-- Progressbar End -->
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+{% block js %}
+
+const makeChart= ()=>{
+var graphs = {{graphJSON | safe}};
+Plotly.newPlot('chart',graphs,{});
+}
+
+window.onload= ()=> makeChart()
+{% endblock %}

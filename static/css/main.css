@@ -1,0 +1,19 @@
+/* Color Classes */
+
+.bg-grey-1{
+    background-color: #EFEFEF;
+}
+.bg-grey-2{
+    background-color: #C8C6C6;
+}
+.bg-grey-3{
+    background-color: #9D9D9D;
+}
+
+.bg-clr-1{
+    background-color: #ce295e;
+}
+
+.clr-1{
+    color: #ce295e;
+}

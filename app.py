@@ -9,7 +9,7 @@ import plotly.express as px
 app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'akshay'
+app.config['MYSQL_USER'] = 'gayathri'
 app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'dashboard_app-dev'
 
@@ -50,12 +50,21 @@ def page_2():
   
   q1_strategic_risk= 20
   q1_operational_risk= 40
+  q1_financial_risk= 50
+  q1_regulatory_risk= 80
+  q1_reputational_risk= 10
 
   q2_strategic_risk= 70
   q2_operational_risk= 30
+  q2_financial_risk= 10
+  q2_regulatory_risk= 50
+  q2_reputational_risk= 20
 
   q3_strategic_risk= 50
   q3_operational_risk= 90
+  q3_financial_risk= 20
+  q3_reputational_risk= 60
+  q3_regulatory_risk= 70
 
   return render_template("enterprise-level-risk.html", **locals())
 

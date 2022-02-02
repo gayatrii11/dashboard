@@ -9,7 +9,7 @@ import plotly.express as px
 app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'gayathri'
+app.config['MYSQL_USER'] = 'akshay'
 app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'dashboard_app-dev'
 
@@ -67,6 +67,17 @@ def page_2():
   q3_regulatory_risk= 70
 
   return render_template("enterprise-level-risk.html", **locals())
+
+
+@app.route("/dashboard/db-data")
+def db_data():
+  path= request.path
+
+  cur = mysql.connection.cursor()
+  cur.execute("""SELECT * FROM `dashboard`""")
+  data = cur.fetchall()
+  print(type(data))
+  return render_template("db-data.html", **locals())
 
 
 @app.route("/dashboard/js-chart")

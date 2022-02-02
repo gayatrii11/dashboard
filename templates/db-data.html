@@ -1,0 +1,30 @@
+{% extends "layouts/dashboard.layout.html" %}
+
+{% block title %} DB Data {% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Quarter</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <th scope="row">{{ i[0] }}</th>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

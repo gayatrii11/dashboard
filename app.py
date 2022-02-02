@@ -76,7 +76,6 @@ def db_data():
   cur = mysql.connection.cursor()
   cur.execute("""SELECT * FROM `dashboard`""")
   data = cur.fetchall()
-  print(type(data))
   return render_template("db-data.html", **locals())
 
 

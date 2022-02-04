@@ -86,17 +86,12 @@ def kpi_charts():
   cur = mysql.connection.cursor()
   cur.execute("""SELECT * FROM `kpi charts`""")
   data = cur.fetchall()
-  # ini ippo html file edit cheyyanam le
-  # oru dbt avde dash boardlu side option elle orders ath pole kp charts nm engana vertha??
-  # good question !  ?? save chynde  it is auto saved ohk  midukki padichallo ENi html lu set aakanmthen aa charts edknde yes ...m oru kaarym m cheyyatte
   Current_ratio=data[0][2]
   Acid_test_ratio= data[1][2] 
   Cash_ratio= data[2][2] 
   Net_op_cash_flow_ratio= data[3][2] 
   DSO= data[4][2] 
   return render_template("kpi_charts.html", **locals())
-
-
 
 
 @app.route("/dashboard/js-chart")

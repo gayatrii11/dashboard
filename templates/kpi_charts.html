@@ -1,0 +1,172 @@
+{% extends "layouts/dashboard.layout.html" %}
+
+{% block title %} KPI CHARTS {% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="shadow-sm rounded-3">
+        <div class="bg-light p-2 py-4">
+          <div class="d-flex align-items-center justify-content-center">
+            <h2>
+              <strong>
+                {{ gross_revenue }}
+              </strong>
+            </h2>
+          </div>
+          <div class="text-center mt-2">
+            <h5 class="text-secondary">Gross Revenue</h5>
+          </div>
+        </div>
+        <div class="bg-white p-2 text-center">
+          <h6 class="text-secondary">
+            Net Revenue: <strong>{{ net_revenue }}</strong>
+          </h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="shadow-sm rounded-3">
+        <div class="bg-light p-2 py-4">
+          <div class="d-flex align-items-center justify-content-center">
+            <h2>
+              <strong>
+                {{ net_profit }}
+              </strong>
+            </h2>
+          </div>
+          <div class="text-center mt-2">
+            <h5 class="text-secondary">Net Profit</h5>
+          </div>
+        </div>
+        <div class="bg-white p-2 text-center">
+          <h6 class="text-secondary">
+            Customer Base: <strong>{{ customer_base }}</strong>
+          </h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="shadow-sm rounded-3">
+        <div class="bg-light p-2 py-2">
+          <div class="d-flex align-items-center justify-content-center">
+            <h5>
+              Net Worth:
+              <strong>
+                {{ net_worth }}
+              </strong>
+            </h5>
+          </div>
+        </div>
+        <div class="bg-grey-3 p-2 text-center">
+          <h6 class="text-light">
+            Reserves and Surplus: <strong>{{ reserve_and_sur }}</strong>
+          </h6>
+        </div>
+        <div class="bg-grey-2 p-2 text-center">
+          <h6 class="text-light">
+            Equity: <strong>{{ equity }}</strong>
+          </h6>
+        </div>
+        <div class="bg-grey-1 p-2 text-center">
+          <h6 class="text-secondary">
+            Long Term Debt: <strong>{{ long_term_debt }}</strong>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- row 2 -->
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <div class="shadow-sm rounded-3">
+        <div class="bg-light p-2 text-center">
+          <h6 class="text-secondary">
+            <strong>Key Market</strong>
+          </h6>
+        </div>
+        <div class="bg-white p-2 py-4 d-flex justify-content-center">
+          <img src="{{ url_for('static', filename='images/map.png') }}" alt="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="shadow-sm rounded-3">
+        <div class="bg-light p-2 text-center">
+          <h6 class="text-secondary">
+            <strong>Fraud Alerts</strong>
+          </h6>
+        </div>
+        <div class="row">
+          <div class="col rounded-3">
+            <h2 class="text-center clr-1">
+              <strong>{{ alert_1 }}</strong>
+            </h2>
+            <div class="p-1 bg-clr-1 text-light">
+              <span>{{ alert_1_area }}</span>
+            </div>
+
+            <div class="mt-1"></div>
+
+            <h2 class="text-center text-secondary">
+              <strong>{{ alert_rest }}</strong>
+            </h2>
+            <div class="p-1 bg-clr-1 text-light">
+              <span>Rest of the World</span>
+            </div>
+          </div>
+          <div class="col">
+            chart here
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="shadow-sm rounded-3">
+        <div class="bg-light p-2 py-2">
+          <div class="d-flex align-items-center justify-content-center">
+            <h6>
+              Governance Score:
+              <strong>
+                {{ govern_score }}
+              </strong>
+            </h6>
+          </div>
+        </div>
+        <div class="bg-success p-2 py-3 text-center">
+          <h6 class="text-light">
+            5 Entities Score: <strong>{{ five_ent_score }}</strong>
+          </h6>
+        </div>
+        <div class="bg-warning p-2 py-3 text-center">
+          <h6 class="text-light">
+            20 Entities Score: <strong>{{ twenty_ent_score }}</strong>
+          </h6>
+        </div>
+        <div class="bg-danger p-2 py-3 text-center">
+          <h6 class="text-light">
+            3 Entities Scores: <strong>{{ three_ent_score }}</strong> 
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+const makeChart= ()=>{
+var graphs = {{graphJSON | safe}};
+Plotly.newPlot('chart',graphs,{});
+}
+
+window.onload= ()=> makeChart()
+{% endblock %}

@@ -91,6 +91,11 @@ def kpi_charts():
   Cash_ratio= data[2][2] 
   Net_op_cash_flow_ratio= data[3][2] 
   DSO= data[4][2] 
+
+  Suppliers= 80
+  Contracted= 50
+  Customers= 70
+
   return render_template("kpi_charts.html", **locals())
 
 

@@ -10,8 +10,21 @@
   <div class="row mt-4 mx-auto">
 
     <div class="col-md-4">
-      <div id="current-ratio-chart"></div>
+      <div class="shadow-sm rounded-3">
+        <div class="bg-light p-2 py-4">
+          <div id="current-ratio-chart"></div>
+        </div>
+      </div>
     </div>
+
+    <div class="col-md-8">
+      <div class="shadow-sm rounded-3">
+        <div class="bg-light p-2 py-4">
+          <div id="acid-test-chart"></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 {% endblock %}
@@ -19,7 +32,7 @@
 {% block js %}
 
 const makeChart= ()=>{
-  var data = [
+  var current_ratio_data = [
 	{
 		domain: { x: [0, 1], y: [0, 1] },
 		value: {{ Current_ratio }},
@@ -28,8 +41,23 @@ const makeChart= ()=>{
 		mode: "gauge+number"
 	}
 ];
-var layout = { width: 400, height: 450, margin: { t: 0, b: 0 } };
-Plotly.newPlot('current-ratio-chart', data, layout);
+var current_ratio_layout = { width: 300, height: 200, margin: { t: 25, r: 25, l: 25, b: 25 }, paper_bgcolor: "#f8f9fa", };
+Plotly.newPlot('current-ratio-chart', current_ratio_data, current_ratio_layout);
+
+var acid_test_data = [
+  {
+    x: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    y: [20, 14, 23, 33, 17, 11, 13],
+    type: 'bar',
+    marker:{
+      color: ['red', 'green', 'green', 'red', 'red', 'green', 'green']
+    },
+  }
+];
+
+let acid_test_layout= { width: 700, height: 200, margin: { t: 25, r: 25, l: 25, b: 25 }, paper_bgcolor: "#f8f9fa", };
+Plotly.newPlot('acid-test-chart', acid_test_data, acid_test_layout);
+
 }
 
 window.onload= ()=> makeChart()

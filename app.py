@@ -17,7 +17,7 @@ mysql = MySQL(app)
 
 @app.route("/")
 def home():
-    return "<p>Hello World Test</p>"
+    return "<p>Hello World zz</p>"
 
 @app.route("/dashboard")
 def dashboard():
